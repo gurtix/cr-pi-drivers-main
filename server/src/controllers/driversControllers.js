@@ -59,13 +59,15 @@ const getAllDrivers = async () => {
     const drivers = driversDB.map(driver => ({
         id: driver.id,
         name: driver.name,
+        dob: driver.dob,
         teams: driver.Teams.map(team => team.teams).join(', '),
-        created: true,
+        create: true,
     }));
     const infoApi = (await axios.get(`http://localhost:5000/Drivers`)).data;
     const driversApi = infoApi.map(driver => ({
         id: driver.id,
         name: driver.name,
+        dob: driver.dob,
         teams: driver.teams,
         create: false,
     }));

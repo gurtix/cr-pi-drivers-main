@@ -42,7 +42,8 @@ const createDriverHandler = async (req, res) =>{
     }
 };
 const getTeamsHandler = async (req, res) =>{
-    try {        
+    try {
+        const teams = await getTeams();
         res.status(200).send(teams);
     } catch (error) {
         res.status(400).send({ error: error.message });
