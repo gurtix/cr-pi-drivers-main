@@ -7,7 +7,7 @@ import backgroundVideo from './driver.mp4';
 
 function Landing() {
   return(
-    <div className="landing-root">
+    <div className="landing-root" >
     <div className="landing-page">
       <video autoPlay loop muted>
         <source src={backgroundVideo} type="video/mp4" />
