@@ -1,20 +1,23 @@
 .backgroundCard{
     width: 400px;
-    height: 330px;
-    transition: trasnform 1.3s ease;
+    height: 340px;
+    transition: transform 0.3s ease;
+}
+.backgroundCard:hover{
+    box-shadow: 0px 0px 40px rgb(255, 0, 0);
 }
 
 .card-container{
     align-items: center;
     width: 400px;
-    height: 330px;
+    height: 340px;
     display: flex;
     flex-direction: column;
     border: 1px solid grey;
     border-radius: 5px;
     padding: 25px;
     cursor: pointer;
-    transition: trasnform 1.3s ease;
+    transition: transform 0.3s ease;
     box-shadow: 0px 0px 5px #fff;
 }
 .card-container img {
@@ -33,9 +36,15 @@
 }
 p{
     font-size: 1.2rem;
-    color: rgb(135, 245, 227);
+    color: rgb(64, 255, 0);
+    filter: drop-shadow(0 0 5px #000000);
 }
 .card-container h2{
     font-size: 1.8rem;
-    color: rgb(221, 202, 0)
+    color: rgb(221, 202, 0);
+    filter: drop-shadow(0 0 5px #000000);
+}
+.dob{
+    color: #fff;
+    filter: drop-shadow(0 0 5px #000000);
 }

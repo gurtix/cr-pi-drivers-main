@@ -46,12 +46,12 @@ function Cards({ sortOrder, selectedTeam, showCreated, searchTerm }){
                                                     sortedDrivers = sortedDrivers.filter(driver => driver.create);
                                                 }
                                                 if (searchTerm) {
-                                                    const lowerCaseSearchTerm = searchTerm.toLowerCase();
                                                     sortedDrivers = sortedDrivers.filter(driver => 
-                                                        driver.name.forename.toLowerCase().includes(lowerCaseSearchTerm) || 
-                                                        driver.name.surname.toLowerCase().includes(lowerCaseSearchTerm)
+                                                        driver.name.forename.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                                        driver.name.surname.toLowerCase().includes(searchTerm.toLowerCase())
                                                     );
                                                 }
+                                                
                                                 setDrivers(sortedDrivers);
                                             });
                                         });                                    

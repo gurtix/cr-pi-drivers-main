@@ -15,13 +15,25 @@
     display: flex;
     justify-content: center;
 }
-
-button.active {
-    background-color: #007BFF;
-    color: white;
+.pagination-bot{
+    padding-bottom: 40px;
 }
 
 .pagination-top button, .pagination-bot button{
     padding: 4px;
     min-width: 100px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #ffffff;
+    border-radius: 5px;
+    margin: 0 2px;
+}
+
+.pagination-bot button:hover , .pagination-top button:hover{
+    background-color: rgba(255, 205, 255, 0.1);
+}
+
+button.active {
+    background-color: #a10000;
+    color: white;
 }

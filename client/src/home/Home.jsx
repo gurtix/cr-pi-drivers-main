@@ -1,15 +1,14 @@
 import "./Home.css";
-import Search from "../components/search/search";
 import Cards from "../components/cards/cards"
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 
 function Home() {
+    const [searchTerm, setSearchTerm] = useState('');
     const [sortOrder, setSortOrder] = useState('');
     const [isScrolled, setIsScrolled] = useState(false);
     const [selectedTeam, setSelectedTeam] = useState('');
     const [teams, setTeams] = useState([]);
-    const [drivers, setDrivers] = useState([]);    
-    const [searchTerm, setSearchTerm] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [showCreated, setShowCreated] = useState(false);
 
@@ -40,40 +39,20 @@ function Home() {
             window.removeEventListener('scroll', checkScroll);
         };
     }, []);
-
-    useEffect(() => {
-        fetch('http://localhost:3001/Drivers')
-            .then(response => response.json())
-            .then(data => {
-                let filteredDrivers = data;
-
-                if (searchTerm) {
-                    filteredDrivers = filteredDrivers.filter(driver => driver.name.forename.includes(searchTerm) || driver.name.surname.includes(searchTerm));
-                }
+    
 
 
-                console.log(filteredDrivers);
-                setDrivers(filteredDrivers);
-            });
-    }, [searchTerm,]);
-
-    const handleSearchResults = (results) => {        
-        setDrivers(results);
-    };
-    const handleSearchTerm = (term) => {        
-        setSearchTerm(term);
-    };
     return (
         <div className="home">
             <header className={`header ${isScrolled ? 'hidden' : ''}`}>
-                <nav>
-                    <button onClick={() => history.push('/create')}>Crear Corredor</button>
-                </nav>
-                <Search onSearch={handleSearchTerm} />
+                <Link to={"/create"}>
+                    <button >Crear Corredor</button>
+                </Link>
+                    <input type="text" placeholder="Buscar por nombre..." onChange={e => setSearchTerm(e.target.value)} />
             </header>
             <div className="filter-button">
                 <button onClick={() => setIsModalOpen(true)}>
-                    Filtrar
+                    ☰
                 </button>
             </div>
             {isModalOpen && (
@@ -89,7 +68,7 @@ function Home() {
                                 <option value="dob">Fecha de nacimiento</option>
                             </select>
                             <select value={selectedTeam} onChange={(e) => setSelectedTeam(e.target.value)}>
-                                <option value="">Todos los equipos</option>
+                                <option value="">Todas las escuderías</option>
                                 {teams.map((team, index) => (
                                     <option key={index} value={team.teams}>{team.teams}</option>
                                 ))}
@@ -99,13 +78,13 @@ function Home() {
                                 <option value="true">Corredores creados</option>
                             </select>
                             <button onClick={() => setIsModalOpen(false)}>
-                                Cerrar
+                                X
                             </button>
                         </div>
                     </div>
                 </div>
             )}
-            <Cards sortOrder={sortOrder} selectedTeam={selectedTeam} showCreated={showCreated} drivers={drivers} />
+            <Cards sortOrder={sortOrder} selectedTeam={selectedTeam} showCreated={showCreated} searchTerm={searchTerm}/>
         </div>
     )
 }
