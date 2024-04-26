@@ -10,7 +10,6 @@ const getDriverHandler = async (req, res) =>{
             res.status(200).json(driverByName);
         }
         else{
-            await getTeams()
             const response = await getAllDrivers();
             res.status(200).json(response);
         }
