@@ -13,10 +13,6 @@ module.exports = (sequelize) => {
       type: DataTypes.JSON,
       allowNull: false,
     },
-    // surname: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
     description: {
       type: DataTypes.STRING,
       allowNull: false,

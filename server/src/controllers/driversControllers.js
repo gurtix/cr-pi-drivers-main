@@ -1,6 +1,5 @@
 const { Driver, Team } = require("../db.js");
 const filterDriverData = require('../modulos/filterDriverData.js');
-const api = require('../../api/db.json');
 const axios = require('axios');
 
 const createDriverDB = async (driverData) => {
@@ -54,7 +53,7 @@ const getAllDrivers = async () => {
             as: 'Teams',
             through: { attributes: [] },
         }],
-        attributes: ['id', 'name'],
+        attributes: ['id', 'name', 'dob'],
     });
     const drivers = driversDB.map(driver => ({
         id: driver.id,
