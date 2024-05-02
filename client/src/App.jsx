@@ -6,7 +6,7 @@ import './App.css'
 import Landing from './landing/Landing';
 import Home from './home/Home';
 import Detail from './detail/Detail';
-import Create from './create/Create';
+import Create from './create/Create.jsx';
 
 function App() {
 

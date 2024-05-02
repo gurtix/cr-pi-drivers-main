@@ -16,7 +16,7 @@ function Detail (){
 
             fetch('http://localhost:3001/Drivers')
     .then(response => response.json())
-    .then(data => setDriverIds(data.map(driver => Number(driver.id))));
+    .then(data => setDriverIds(data.map(driver => driver.id)));
     }, [id]);
     useEffect(() => {
         const checkScroll = () => {
@@ -37,9 +37,13 @@ function Detail (){
     if (!driver) {
         return <div>Loading...</div>;
     }
-    const currentIndex = driverIds.indexOf(numericId);
+    let currentIndex = driverIds.indexOf(numericId);
+    if(currentIndex < 1){
+        currentIndex = 0
+    }
     const prevId = driverIds[currentIndex - 1];
     const nextId = driverIds[currentIndex + 1];
+    console.log(currentIndex);
 
     return (
         <div className="detail">
@@ -54,6 +58,9 @@ function Detail (){
                 {nextId && <Link to={`/home/${nextId}`}><button>Siguiente Corredor</button></Link>}
                 </div>
             </header>
+            <div className="separador"></div>
+            <div className="container-detail">
+
             <div className="image">
                 <table className="img-name">
                     <tr></tr>
@@ -66,7 +73,7 @@ function Detail (){
                 </th>
                 </td>
             </tr>
-                </table>            
+                </table>
             <table className="nationality">
             <tr>
             <td>
@@ -88,7 +95,7 @@ function Detail (){
             </tr>
             </table>
             </div>
-            <div className="info-container">      
+            <div className="info-container">
                 <table className="description">
             <tr className="description-td">
             <td>
@@ -98,7 +105,8 @@ function Detail (){
             </tr>
 
             </table>
-            
+
+            </div>
             </div>
         </div>
     );
